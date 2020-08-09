@@ -135,7 +135,7 @@ class Files:
 
 def Main():
     Data.CreateFiles()
-    Info.InfoPage = f"Info Page\n\nVersion: 3\n\nPython Modules: Cryptography, OS, SYS, Base64, EasyGUIm, BCrypt, Secrets\n\nFiles: {Info.pwData} (Stores Password), {Info.infoData} (Stores information inputted into the manager)"
+    Info.InfoPage = f"Info Page\n\nVersion: 3\n\nPython Modules: Cryptography, OS, SYS, Base64, EasyGUI, BCrypt, Secrets, Random\n\nFiles: {Info.pwData} (Stores Password), {Info.infoData} (Stores information inputted into the manager)"
     Password.Getter(0)
 
 Main()
