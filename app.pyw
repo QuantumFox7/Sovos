@@ -9,10 +9,14 @@ from random import randint
 from easygui import passwordbox, textbox, indexbox, enterbox, msgbox
 from bcrypt import hashpw, gensalt, checkpw
 from secrets import choice
+from datafiles import * 
 
 class Info:
     pwData = "password.data"
     infoData = "data.data"
+    dataFile = "Sovos.data"
+    dataFileName = "Sovos"
+    dataFileVars = ["Password", "Data"]
     InfoPage = ""
 
 class GUI:
@@ -78,8 +82,7 @@ class Password:
 class Data:
     def CreateFiles():
         Dir = os.listdir()
-        if not Info.pwData in Dir: Files.Edit(Info.pwData, "")
-        if not Info.infoData in Dir: Files.Edit(Info.infoData, "")
+        if not Info.dataFile in Dir: createDF(Info.dataFileName, Info.dataFileVars)
                 
     def Unlocked():
         encrypted_data = Files.Read(Info.infoData, "r+").encode()
@@ -123,19 +126,23 @@ class Encryption:
         
 class Files:
     def Edit(file, text):
-        file = open(file, "w+")
-        file.write(text)
-        file.close()
+        if file == Info.pwData:
+            writeVar(Info.dataFileName, "Password", text)
+        if file == Info.infoData:
+            writeVar(Info.dataFileName, "Data", text)
     
     def Read(file, Type):
-        file = open(file, Type)
-        text = file.read()
-        file.close()
-        return text
+        if file == Info.pwData:
+            read = readVar(Info.dataFileName, "Password")
+        if file == Info.infoData:
+            read = readVar(Info.dataFileName, "Data")
+        if Type == "rb":
+            read = read.encode()
+        return read
 
 def Main():
     Data.CreateFiles()
-    Info.InfoPage = f"Info Page\n\nVersion: 3\n\nPython Modules: Cryptography, OS, SYS, Base64, EasyGUI, BCrypt, Secrets, Random\n\nFiles: {Info.pwData} (Stores Password), {Info.infoData} (Stores information inputted into the manager)"
+    Info.InfoPage = f"Info Page\n\nVersion: 4\n\nPython Modules: Cryptography, OS, SYS, Base64, EasyGUI, BCrypt, Secrets, Random, DataFiles\n\nFiles: {Info.dataFile} (Stores Password)"
     Password.Getter(0)
 
 Main()
