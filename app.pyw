@@ -142,7 +142,7 @@ class Files:
 
 def Main():
     Data.CreateFiles()
-    Info.InfoPage = f"Info Page\n\nVersion: 4\n\nPython Modules: Cryptography, OS, SYS, Base64, EasyGUI, BCrypt, Secrets, Random, DataFiles\n\nFiles: {Info.dataFile} (Stores Password)"
+    Info.InfoPage = f"Info Page\n\nVersion: 4\n\nPython Modules: Cryptography, OS, SYS, Base64, EasyGUI, BCrypt, Secrets, Random, DataFiles\n\nFiles: {Info.dataFile} (Stores Data)"
     Password.Getter(0)
 
 Main()
